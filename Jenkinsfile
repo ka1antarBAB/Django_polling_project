@@ -14,12 +14,15 @@ pipeline {
                 sh '. venv/bin/activate && python3 manage.py test'
             }
         }
-        stage('Deploy') {
+        stage('Deploy to staging') {
             steps {
                 sh 'echo Deploying....'
                 sh 'ssh deploy@192.168.1.104 -o StrictHostKeyChecking=no "bash /var/www/polling/script/deploy.sh"'
-
-
+            }
+        stage('Deploy production') {
+            steps {
+                sh 'echo Deploying....'
+                sh 'ssh deploy@192.168.1.107 -o StrictHostKeyChecking=no "bash /var/www/polling/script/deploy.sh"'
             }
         }
     }
