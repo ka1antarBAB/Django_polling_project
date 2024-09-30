@@ -20,7 +20,11 @@ pipeline {
                 sh 'ssh deploy@192.168.1.104 -o StrictHostKeyChecking=no "bash /var/www/polling/script/deploy.sh"'
             }
         }
-        stage('Deploy production') {
+        stage('Deploy to Production') {
+            input {
+                message "shall we deploy to production?"
+                ok "Yes please"
+            }
             steps {
                 sh 'echo Deploying....'
                 sh 'ssh deploy@192.168.1.107 -o StrictHostKeyChecking=no "bash /var/www/polling/script/deploy.sh"'
