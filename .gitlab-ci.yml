@@ -23,7 +23,7 @@ test:
     - cp env.example .env
     - python3 -m venv venv
     - source venv/bin/activate
-    - python3 manage.py test
+    - venv/bin/python manage.py test
 
 deploy:
   stage: deploy
