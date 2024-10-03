@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'test -d venv || python3 -m venv venv'
+                sh 'cp env.example .env'
                 sh '. venv/bin/activate && pip install -r requirements.txt'
             }
         }
