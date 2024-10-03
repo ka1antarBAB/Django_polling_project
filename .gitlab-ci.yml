@@ -5,15 +5,21 @@ stages:
 
 build:
   stage: build
+  tags:
+    - self-hosted
   script:
     - echo "building"
 
 test:
   stage: test
+  tags:
+    - self-hosted
   script:
     - echo "testing"
 
 deploy:
   stage: deploy
+  tags:
+    - self-hosted
   script:
     - echo deploying
