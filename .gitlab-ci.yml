@@ -9,6 +9,8 @@ build:
     - self-hosted
   script:
     - echo "building"
+    - cp env.example .env
+    - pip3 install -r requirements.txt
 
 test:
   stage: test
@@ -16,6 +18,8 @@ test:
     - self-hosted
   script:
     - echo "testing"
+    - cp env.example .env
+    - python3 manage.py test
 
 deploy:
   stage: deploy
@@ -23,3 +27,4 @@ deploy:
     - self-hosted
   script:
     - echo deploying
+    - ssh deploy@192.168.1.103 -o StrictHostKeyChecking=no 'bash /var/www/polling/script/deploy.sh'
