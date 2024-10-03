@@ -12,7 +12,7 @@ build:
     - cp env.example .env
     - python3 -m venv venv
     - source venv/bin/activate
-    - pip3 install -r requirements.txt
+    - venv/bin/pip install -r requirements.txt
 
 test:
   stage: test
@@ -21,8 +21,7 @@ test:
   script:
     - echo "testing"
     - cp env.example .env
-    - source venv/bin/activate
-    - python3 manage.py test
+    - venv/bin/python manage.py test
 
 deploy:
   stage: deploy
@@ -30,5 +29,4 @@ deploy:
     - self-hosted
   script:
     - echo deploying
-    - source venv/bin/activate
     - ssh deploy@192.168.1.103 -o StrictHostKeyChecking=no 'bash /var/www/polling/script/deploy.sh'
