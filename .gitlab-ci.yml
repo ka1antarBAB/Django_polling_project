@@ -46,4 +46,4 @@ deploy_production:
     - ssh deploy@192.168.1.107 -o StrictHostKeyChecking=no 'bash /var/www/polling/script/deploy.sh'
   environment:
     name: production
-    when: manual
+  when: manual
