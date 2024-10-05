@@ -26,10 +26,24 @@ test:
     - pip3 install -r requirements.txt
     - venv/bin/python manage.py test
 
-deploy:
+deploy_staging:
+  stage: deploy
+  tags:
+    - self-hosted
+  script:
+    - echo "deploying to staging environment"
+    - ssh deploy@192.168.1.108 -o StrictHostKeyChecking=no 'bash /var/www/polling/script/deploy.sh'
+  environment:
+    name: staging
+    when: manual
+
+deploy_production:
   stage: deploy
   tags:
     - self-hosted
   script:
     - echo deploying
     - ssh deploy@192.168.1.107 -o StrictHostKeyChecking=no 'bash /var/www/polling/script/deploy.sh'
+  environment:
+    name: production
+    when: manual
