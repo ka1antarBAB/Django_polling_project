@@ -32,4 +32,4 @@ deploy:
     - self-hosted
   script:
     - echo deploying
-    - ssh deploy@192.168.1.103 -o StrictHostKeyChecking=no 'bash /var/www/polling/script/deploy.sh'
+    - ssh deploy@192.168.1.106 -o StrictHostKeyChecking=no 'bash /var/www/polling/script/deploy.sh'
