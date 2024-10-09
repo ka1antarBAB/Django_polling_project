@@ -32,7 +32,7 @@ deploy_staging:
     - self-hosted
   script:
     - echo "deploying to staging environment"
-    - ssh deploy@192.168.1.108 -o StrictHostKeyChecking=no 'bash /var/www/polling/script/deploy.sh'
+    #- ssh deploy@192.168.1.108 -o StrictHostKeyChecking=no 'bash /var/www/polling/script/deploy.sh'
   environment:
     name: staging
 
