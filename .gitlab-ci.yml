@@ -42,7 +42,7 @@ deploy_production:
     - self-hosted
   script:
     - echo "deploying to production environment"
-    - ssh deploy@192.168.1.106 -o StrictHostKeyChecking=no 'bash /var/www/polling/script/deploy.sh'
+    - ssh deploy@192.168.1.108 -o StrictHostKeyChecking=no 'bash /var/www/polling/script/deploy.sh'
   environment:
     name: production
   when: manual
