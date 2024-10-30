@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:alpine
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+
+  polling:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/polling
+    image: polling-image
+    container_name: polling-website
+
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+volumes:
+  db-data:
+    driver: local
